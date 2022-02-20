@@ -1,0 +1,43 @@
+<ng-container [ngSwitch]="stepperOrientation | async">
+    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
+    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
+  </ng-container>
+  
+  <mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="aplicantInfoFormGroup" label="Fill out your name">
+      <form [formGroup]="aplicantInfoFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="First name" formControlName="name" required>
+          <input matInput placeholder="Last name" formControlName="lastname" required>
+          <input matInput placeholder="E-mail" formControlName="email" required>
+          <input matInput placeholder="Mobile phone number" formControlName="mobilePhone" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" [disabled]="!aplicantInfoFormGroup.valid" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="aplicantCvUploadFormGroup" label="Fill out your address">
+      <form >
+    
+          <mat-label>Address</mat-label>
+        
+        <div>
+          <button mat-raised-button color="accent"  [disabled]="!aplicantInfoFormGroup.valid" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary"  matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
+  
