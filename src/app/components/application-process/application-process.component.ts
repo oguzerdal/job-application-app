@@ -17,9 +17,10 @@ export class ApplicationProcessComponent implements OnInit {
     email: ['', Validators.required],
     mobilePhone: ['', Validators.required],
   });
+  
   aplicantCvUploadFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
   });
+
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
