@@ -36,9 +36,16 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="aplicantCvUploadFormGroup" label="Fill out your address">
+    <mat-step [stepControl]="aplicantCvUploadFormGroup" label="Upload your CV">
         <form>
             <mat-label></mat-label>
+            <div>
+                <label class="custom-file-upload">
+                    <input type="file" (change)="onFileSelected($event)" />
+                    Upload CV
+                </label>
+                <div class="file-name" *ngIf="selectedFile">{{selectedFile.name}}</div>
+            </div>
             <div>
                 <button mat-raised-button color="accent" [disabled]="!aplicantInfoFormGroup.valid"
                     matStepperPrevious>Back</button>
@@ -51,6 +58,7 @@
         <p>You are now done.</p>
         <div>
             <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperPrevious>Submit</button>
         </div>
     </mat-step>
 </mat-stepper>

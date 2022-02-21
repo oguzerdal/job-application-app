@@ -11,25 +11,33 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./application-process.component.scss']
 })
 export class ApplicationProcessComponent implements OnInit {
-  aplicantInfoFormGroup = this._formBuilder.group({
+
+  selectedFile: File = null;
+  aplicantInfoFormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
     mobilePhone: ['', Validators.required],
   });
-  
-  aplicantCvUploadFormGroup = this._formBuilder.group({
+
+  aplicantCvUploadFormGroup = this.formBuilder.group({
   });
 
   stepperOrientation: Observable<StepperOrientation>;
 
-  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
+  constructor(private formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
   }
 
   ngOnInit(): void {
+  }
+
+  onFileSelected(event){
+    console.log(event)
+    this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile)
   }
 
 }
