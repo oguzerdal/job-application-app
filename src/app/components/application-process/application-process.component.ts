@@ -20,9 +20,6 @@ export class ApplicationProcessComponent implements OnInit {
     mobilePhone: ['', Validators.required],
   });
 
-  aplicantCvUploadFormGroup = this.formBuilder.group({
-  });
-
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(private formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
@@ -38,6 +35,9 @@ export class ApplicationProcessComponent implements OnInit {
     console.log(event)
     this.selectedFile = <File>event.target.files[0];
     console.log(this.selectedFile)
+    console.log(this.aplicantInfoFormGroup)
   }
+
+
 
 }

@@ -1,6 +1,6 @@
 <h1> Job Application Process </h1>
 <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
-    <mat-step [stepControl]="aplicantInfoFormGroup" label="Fill out your name">
+    <mat-step [stepControl]="aplicantInfoFormGroup" label="Fill out your information">
         <form [formGroup]="aplicantInfoFormGroup">
             <div>
                 <mat-form-field appearance="fill">
@@ -32,7 +32,7 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="aplicantCvUploadFormGroup" label="Upload your CV">
+    <mat-step label="Upload your CV">
         <form>
             <mat-label></mat-label>
             <div>
@@ -43,18 +43,43 @@
                 <div class="file-name" *ngIf="selectedFile">{{selectedFile.name}}</div>
             </div>
             <div>
-                <button mat-raised-button color="accent" [disabled]="!aplicantInfoFormGroup.valid"
-                    matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary" matStepperNext>Next</button>
+                <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" [disabled]="!selectedFile"
+                    matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Review and Submit</ng-template>
-        
+        <div class="applicant-review-info">
+            <div class="review-item">
+                <b>Name: </b> <span *ngIf="aplicantInfoFormGroup.value.name">{{aplicantInfoFormGroup.value.name}}</span>
+            </div>
+            <div class="review-item">
+                <b>Lastname: </b> <span
+                    *ngIf="aplicantInfoFormGroup.value.lastname">{{aplicantInfoFormGroup.value.lastname}}</span>
+            </div>
+            <div class="review-item">
+                <b>E-mail: </b> <span
+                    *ngIf="aplicantInfoFormGroup.value.email">{{aplicantInfoFormGroup.value.email}}</span>
+            </div>
+            <div class="review-item">
+                <b>Mobile phone number: </b> <span
+                    *ngIf="aplicantInfoFormGroup.value.mobilePhone">{{aplicantInfoFormGroup.value.mobilePhone}}</span>
+            </div>
+            <div class="review-item">
+                <b>Uploaded file name: </b> <span *ngIf="selectedFile">{{selectedFile.name}}</span>
+            </div>
+        </div>
         <div>
             <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" matStepperPrevious>Submit</button>
+            <button mat-raised-button color="primary" matStepperNext>Submit</button>
         </div>
     </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <b>Thank you for your application.</b> 
+        <p>Your application was submitted successfully.</p>
+    </mat-step>
+
 </mat-stepper>
