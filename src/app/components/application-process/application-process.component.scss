@@ -1,13 +1,14 @@
-.example-stepper {
-    margin-top: 8px;
-  }
+h1{
+  text-align: center;
+  color: var(--primary-color);
+}
   
-  .mat-form-field {
-    margin-top: 16px;
-  }
-  
-  input[type="file"] {
-    display: none;
+.mat-form-field {
+  margin-top: 16px;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 .custom-file-upload {

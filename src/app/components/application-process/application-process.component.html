@@ -1,8 +1,4 @@
-<ng-container [ngSwitch]="stepperOrientation | async">
-    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
-    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
-</ng-container>
-
+<h1> Job Application Process </h1>
 <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="aplicantInfoFormGroup" label="Fill out your name">
         <form [formGroup]="aplicantInfoFormGroup">
@@ -54,8 +50,8 @@
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
+        <ng-template matStepLabel>Review and Submit</ng-template>
+        
         <div>
             <button mat-raised-button color="accent" matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" matStepperPrevious>Submit</button>
